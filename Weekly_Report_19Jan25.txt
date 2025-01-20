@@ -62,3 +62,14 @@ where f.ownerid =985 and f.StatusCodeId = 100036  --693384532.02
 /*User Login*/
 select format(dateadd(hour,08,LoginDate),'yyyy-MM-dd'),count(distinct userid)   from LoginHistory  where OwnerID = 985  and convert(date,LoginDate)>='2024-04-18' and convert(date,dateadd(hour,08,LoginDate))<='2025-01-18' 
 group by format(dateadd(hour,08,LoginDate),'yyyy-MM-dd')   order by format(dateadd(hour,08,LoginDate),'yyyy-MM-dd')
+
+
+
+DECLARE @Year INT = 2025;  -- Specify the year
+DECLARE @Month INT = 1;    -- Specify the month (e.g., 1 for January)
+
+-- First Date of the Month
+SELECT DATEFROMPARTS(@Year, @Month, 1) AS FirstDate;
+
+-- Last Date of the Month
+SELECT EOMONTH(DATEFROMPARTS(@Year, @Month, 1)) AS LastDate;
